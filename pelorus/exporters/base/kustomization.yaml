@@ -1,0 +1,22 @@
+resources:
+- env/exporters-rbac/cluster-role.yaml
+- env/exporters-rbac/cluster-role-binding.yaml
+- env/exporters-rbac/service-account.yaml
+- env/gitops-rbac/role.yaml
+- env/gitops-rbac/role-binding.yaml
+- env/service-monitor/k8s-apps-http.yaml
+- pipeline-exporters/build-configs/committime-exporter.yaml
+- pipeline-exporters/build-configs/deploytime-exporter.yaml
+- pipeline-exporters/deployment-configs/committime-exporter.yaml
+- pipeline-exporters/deployment-configs/deploytime-exporter.yaml
+- pipeline-exporters/image-streams/committime-exporter.yaml
+- pipeline-exporters/image-streams/deploytime-exporter.yaml
+- pipeline-exporters/routes/committime-exporter.yaml
+- pipeline-exporters/routes/deploytime-exporter.yaml
+- pipeline-exporters/services/committime-exporter.yaml
+- pipeline-exporters/services/deploytime-exporter.yaml
+- universal-exporters/build-configs/failure-exporter.yaml
+- universal-exporters/deployment-configs/failure-exporter.yaml
+- universal-exporters/image-streams/failure-exporter.yaml
+- universal-exporters/routes/failure-exporter.yaml
+- universal-exporters/services/failure-exporter.yaml

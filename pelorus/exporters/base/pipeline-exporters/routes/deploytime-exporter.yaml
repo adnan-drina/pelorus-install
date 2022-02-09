@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: deploytime-exporter
+  namespace: pelorus
+  labels:
+    app.kubernetes.io/name: deploytime-exporter
+spec:
+  to:
+    kind: Service
+    name: deploytime-exporter
+    weight: 100
+  port:
+    targetPort: http

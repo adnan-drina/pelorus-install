@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: failure-exporter
+  namespace: pelorus
+  labels:
+    app.kubernetes.io/name: failure-exporter
+    k8s-app: failure-exporter
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: failure-exporter
+    deploymentconfig: failure-exporter

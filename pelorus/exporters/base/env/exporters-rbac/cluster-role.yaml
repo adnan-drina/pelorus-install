@@ -1,0 +1,37 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/component: pelorus-exporters
+    app.kubernetes.io/name: pelorus
+    app.kubernetes.io/version: v1.1
+  name: pelorus-exporter-pelorus
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+      - replicationcontrollers
+      - pods
+    verbs:
+      - list
+  - apiGroups:
+      - apps
+    resources:
+      - replicasets
+    verbs:
+      - list
+  - apiGroups:
+      - extensions
+    resources:
+      - replicasets
+    verbs:
+      - list
+  - apiGroups:
+      - build.openshift.io
+    resources:
+      - builds
+      - buildconfigs
+    verbs:
+      - list
+      - get

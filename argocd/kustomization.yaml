@@ -1,0 +1,3 @@
+resources:
+- pelorus-argo-app.yaml
+- pelorus-exporters-app.yaml

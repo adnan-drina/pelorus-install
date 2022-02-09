@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: k8s-apps-http
+  namespace: pelorus
+  labels:
+    k8s-apps: http
+spec:
+  endpoints:
+    - interval: 5m
+      port: http
+  jobLabel: k8s-app
+  namespaceSelector:
+    matchNames:
+      - pelorus
+  selector:
+    matchExpressions:
+      - key: k8s-app
+        operator: Exists

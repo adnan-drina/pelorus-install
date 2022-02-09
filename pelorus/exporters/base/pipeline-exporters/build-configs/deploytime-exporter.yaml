@@ -1,0 +1,34 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: deploytime-exporter
+  namespace: pelorus
+  labels:
+    app: deploytime-exporter
+    app.kubernetes.io/name: deploytime-exporter
+    application: deploytime-exporter
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'deploytime-exporter:latest'
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: registry.access.redhat.com/ubi8/python-39
+  source:
+    type: Git
+    git:
+      uri: 'http://github.com/adnan-drina/pelorus.git'
+      ref: master
+    contextDir: exporters
+  triggers:
+    - type: GitHub
+      github:
+        secretReference:
+          name: github-secret
+    - type: ConfigChange

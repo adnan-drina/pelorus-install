@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: failure-exporter
+  namespace: pelorus
+  labels:
+    app.kubernetes.io/name: failure-exporter
+spec:
+  to:
+    kind: Service
+    name: failure-exporter
+    weight: 100
+  port:
+    targetPort: http

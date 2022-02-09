@@ -1,0 +1,72 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: failure-exporter
+  namespace: pelorus
+  labels:
+    app.kubernetes.io/name: failure-exporter
+    application: failure-exporter
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - failure-exporter
+        from:
+          kind: ImageStreamTag
+          namespace: pelorus
+          name: 'failure-exporter:latest'
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: failure-exporter
+    app.kubernetes.io/name: failure-exporter
+    deploymentconfig: failure-exporter
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: failure-exporter
+        app.kubernetes.io/name: failure-exporter
+        application: failure-exporter
+        deploymentconfig: failure-exporter
+    spec:
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: failure-exporter
+          env:
+            - name: APP_FILE
+              value: failure/app.py
+            - name: NAMESPACES
+              value: 'gitops-demo-cicd,gitops-demo-stage,gitops-demo-dev'
+            - name: LOG_LEVEL
+              value: DEBUG
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: Always
+          terminationMessagePolicy: File
+          envFrom:
+            - secretRef:
+                name: jira-secret
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: pelorus-exporter
+      serviceAccount: pelorus-exporter
+      securityContext: {}
+      schedulerName: default-scheduler

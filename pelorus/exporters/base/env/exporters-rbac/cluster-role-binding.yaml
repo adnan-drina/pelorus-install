@@ -1,0 +1,33 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/component: pelorus-exporters
+    app.kubernetes.io/name: pelorus
+    app.kubernetes.io/version: v1.2
+  name: pelorus-exporter-pelorus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pelorus-exporter-pelorus
+subjects:
+  - kind: ServiceAccount
+    name: pelorus-exporter
+    namespace: pelorus
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app.kubernetes.io/component: pelorus-exporters
+    app.kubernetes.io/name: pelorus
+    app.kubernetes.io/version: v1.2
+  name: pelorus-pipeline-edit
+subjects:
+  - kind: ServiceAccount
+    name: pelorus-exporter
+    namespace: pelorus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit

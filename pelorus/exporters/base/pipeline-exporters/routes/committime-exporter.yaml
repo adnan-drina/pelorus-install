@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: committime-exporter
+  namespace: pelorus
+  labels:
+    app.kubernetes.io/name: committime-exporter
+spec:
+  to:
+    kind: Service
+    name: committime-exporter
+    weight: 100
+  port:
+    targetPort: http
