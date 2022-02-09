@@ -53,7 +53,7 @@ spec:
             - name: APP_FILE
               value: deploytime/app.py
             - name: NAMESPACES
-              value: 'gitops-demo-cicd,gitops-demo-stage'
+              value: 'coolstore-inventory-cicd,coolstore-inventory-stage'
             - name: LOG_LEVEL
               value: DEBUG
           resources: {}
