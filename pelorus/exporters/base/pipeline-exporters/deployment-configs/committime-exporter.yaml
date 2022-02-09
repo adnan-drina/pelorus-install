@@ -49,7 +49,7 @@ spec:
             - name: APP_FILE
               value: committime/app.py
             - name: NAMESPACES
-              value: 'gitops-demo-cicd,gitops-demo-stage,gitops-demo-dev'
+              value: 'gitops-demo-cicd,gitops-demo-stage'
             - name: LOG_LEVEL
               value: DEBUG
           ports:

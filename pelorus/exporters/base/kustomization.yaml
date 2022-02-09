@@ -15,6 +15,16 @@ resources:
 - pipeline-exporters/routes/deploytime-exporter.yaml
 - pipeline-exporters/services/committime-exporter.yaml
 - pipeline-exporters/services/deploytime-exporter.yaml
+- build-exporters/build-configs/committime-exporter.yaml
+- build-exporters/build-configs/deploytime-exporter.yaml
+- build-exporters/deployment-configs/committime-exporter.yaml
+- build-exporters/deployment-configs/deploytime-exporter.yaml
+- build-exporters/image-streams/committime-exporter.yaml
+- build-exporters/image-streams/deploytime-exporter.yaml
+- build-exporters/routes/committime-exporter.yaml
+- build-exporters/routes/deploytime-exporter.yaml
+- build-exporters/services/committime-exporter.yaml
+- build-exporters/services/deploytime-exporter.yaml
 - universal-exporters/build-configs/failure-exporter.yaml
 - universal-exporters/deployment-configs/failure-exporter.yaml
 - universal-exporters/image-streams/failure-exporter.yaml

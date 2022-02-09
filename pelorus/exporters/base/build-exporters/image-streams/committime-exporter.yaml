@@ -1,0 +1,8 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: committime-build-exporter
+  namespace: pelorus
+  labels:
+    app: committime-build-exporter
+    app.kubernetes.io/name: committime-build-exporter

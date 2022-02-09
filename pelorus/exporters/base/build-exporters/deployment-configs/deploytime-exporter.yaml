@@ -1,11 +1,11 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
-  name: deploytime-exporter
+  name: deploytime-build-exporter
   namespace: pelorus
   labels:
-    app.kubernetes.io/name: deploytime-exporter
-    application: deploytime-exporter
+    app.kubernetes.io/name: deploytime-build-exporter
+    application: deploytime-build-exporter
 spec:
   strategy:
     type: Rolling
@@ -23,29 +23,29 @@ spec:
       imageChangeParams:
         automatic: true
         containerNames:
-          - deploytime-exporter
+          - deploytime-build-exporter
         from:
           kind: ImageStreamTag
           namespace: pelorus
-          name: 'deploytime-exporter:latest'
+          name: 'deploytime-build-exporter:latest'
   replicas: 1
   revisionHistoryLimit: 10
   test: false
   selector:
-    app: deploytime-exporter
-    app.kubernetes.io/name: deploytime-exporter
-    deploymentconfig: deploytime-exporter
+    app: deploytime-build-exporter
+    app.kubernetes.io/name: deploytime-build-exporter
+    deploymentconfig: deploytime-build-exporter
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: deploytime-exporter
-        app.kubernetes.io/name: deploytime-exporter
-        application: deploytime-exporter
-        deploymentconfig: deploytime-exporter
+        app: deploytime-build-exporter
+        app.kubernetes.io/name: deploytime-build-exporter
+        application: deploytime-build-exporter
+        deploymentconfig: deploytime-build-exporter
     spec:
       containers:
-        - name: deploytime-exporter
+        - name: deploytime-build-exporter
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -53,7 +53,7 @@ spec:
             - name: APP_FILE
               value: deploytime/app.py
             - name: NAMESPACES
-              value: 'gitops-demo-cicd,gitops-demo-stage'
+              value: 'gitops-demo-dev'
             - name: LOG_LEVEL
               value: DEBUG
           resources: {}
