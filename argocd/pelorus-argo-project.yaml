@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pelorus
+  namespace: openshift-gitops
+spec:
+  description: Software Delivery Performance with Pelorus
+  sourceRepos:
+#    - '*'
+    - https://github.com/adnan-drina/pelorus-install.git
+  destinations:
+    - namespace: pelorus
+      server: https://kubernetes.default.svc
+  roles:
+    - name: read-only
+      description: admin privileges to pelorus project
+      policies:
+        - p, proj:pelorus:admin, repositories, create, pelorus/*, allow
+        - p, proj:pelorus:admin, repositories, delete, pelorus/*, allow
+        - p, proj:pelorus:admin, repositories, update, pelorus/*, allow
