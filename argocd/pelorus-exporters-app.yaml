@@ -29,7 +29,7 @@ spec:
       jsonPointers:
         - /spec/host
       kind: Route
-  project: pelorus
+  project: default
   source:
     path: pelorus/exporters/overlays
     repoURL: https://github.com/adnan-drina/pelorus-install.git
