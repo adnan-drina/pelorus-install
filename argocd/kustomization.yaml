@@ -1,4 +1,4 @@
 resources:
 - pelorus-argo-app.yaml
-- pelorus-argo-project.yaml
+#- pelorus-argo-project.yaml
 - pelorus-exporters-app.yaml
