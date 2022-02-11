@@ -49,7 +49,7 @@ spec:
             - name: APP_FILE
               value: committime/app.py
             - name: NAMESPACES
-              value: 'coolstore-inventory-cicd,coolstore-inventory-stage'
+              value: 'coolstore-inventory-cicd,coolstore-catalog-cicd'
             - name: LOG_LEVEL
               value: DEBUG
           ports:
